@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology Report</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+    h2 {
+        color: #34495e;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+        margin-top: 25px;
+    }
+    ul {
+        margin-bottom: 15px;
+    }
+    li {
+        margin-bottom: 8px;
+    }
+    @media print {
+        body {
+            padding: 0;
+            max-width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <h1>Methodology Report: E-Commerce Conversion Prediction</h1>
+
+    <h2>1. Goal</h2>
+    <p>The objective of this project was to accurately predict whether a user will convert (binary classification) based on their browsing behavior and demographics. The primary metric optimized was the F1 Score.</p>
+
+    <h2>2. Data Preparation</h2>
+    <ul>
+        <li><strong>Combined Datasets:</strong> We merged the training data and public test data to maximize the amount of information the models could learn from.</li>
+        <li><strong>Handling Missing Data:</strong> Missing numerical values were filled in using the median value of their respective columns.</li>
+        <li><strong>Encoding:</strong> Text-based categories (like Device Type and Traffic Source) were converted into numbers so the models could understand them.</li>
+    </ul>
+
+    <h2>3. Feature Engineering</h2>
+    <p>We created several new features to better capture how users interact with the website:</p>
+    <ul>
+        <li><strong>Ratios:</strong> Calculated "Pages Per Product", "Time Per Page", and "Time Per Product" to understand user efficiency.</li>
+        <li><strong>Interactions:</strong> Created an "Engagement Score" by multiplying pages viewed by products viewed.</li>
+        <li><strong>Behavioral Flags:</strong> Added simple yes/no indicators to highlight specific behaviors (e.g., "High Pages", "Long Session", "Is Returning").</li>
+        <li><strong>Age Grouping:</strong> Grouped users into different age brackets for broader pattern recognition.</li>
+    </ul>
+
+    <h2>4. Machine Learning Models</h2>
+    <p>We used an ensemble approach, combining two powerful algorithms to make the final decision:</p>
+    <ul>
+        <li><strong>XGBoost (Weighted 66%):</strong> A highly tuned gradient boosting model. It was given more weight in the final vote because it proved to be slightly stronger in our testing.</li>
+        <li><strong>Random Forest (Weighted 33%):</strong> A balanced random forest model designed to handle class imbalances and provide stability to the predictions.</li>
+    </ul>
+
+    <h2>5. Optimization and Final Prediction</h2>
+    <ul>
+        <li><strong>Cross-Validation:</strong> We tested our models rigorously using 5-fold cross-validation to ensure they would perform well on unseen data.</li>
+        <li><strong>Threshold Tuning:</strong> Instead of using the default 50% probability to decide if someone converts, we tested multiple probability thresholds. We found and applied the exact threshold that maximized our target F1 score.</li>
+        <li><strong>Final Output:</strong> The two models generated a combined probability score. If this score crossed our optimized threshold, the final prediction was set to "Converted" (1), otherwise "Not Converted" (0).</li>
+    </ul>
+
+</body>
+</html>
