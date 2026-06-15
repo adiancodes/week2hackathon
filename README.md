@@ -20,8 +20,5 @@ This repository contains the code and data for a hackathon project that predicts
 2. **Train the model** – Open the notebook `SA2026_Starter_Notebook.ipynb` (or `notebook.ipynb`) and run the cells to train and evaluate the model.
 3. **Generate predictions** – After training, the notebook will create `submission.csv` in the required format.
 
-## Submission
-Upload the `submission.csv` file to the hackathon platform. Ensure the column names match those in `sample_submission.csv`.
-
 ## License
 This project is provided for educational and hackathon purposes. Feel free to adapt the code for your own experiments.
